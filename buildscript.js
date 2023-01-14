@@ -3,8 +3,8 @@ import esbuild from "esbuild";
 import esbuildSvelte from "esbuild-svelte";
 import sveltePreprocess from "svelte-preprocess";
 
-//make sure the directoy exists before stuff gets put into it
-if (!fs.existsSync("./dist/")) {
+if (fs.existsSync("./dist/")) {
+    fs.rmSync("./dist/", { recursive: true, force: true });
     fs.mkdirSync("./dist/");
 }
 esbuild
@@ -13,8 +13,8 @@ esbuild
         bundle: true,
         outdir: `./dist`,
         mainFields: ["svelte", "browser", "module", "main"],
-        minify: process.argv.includes(`--prod`),
-        sourcemap: !process.argv.includes(`--prod`),
+        minify: true,
+        sourcemap: true,
         splitting: true,
         write: true,
         format: `esm`,
@@ -30,8 +30,4 @@ esbuild
         process.exit(1);
     });
 
-//use a basic html file to test with
 fs.cpSync("./static", "./dist", {recursive: true});
-
-// maybe incorporate svelte-check or tsc too?
-// https://github.com/EMH333/esbuild-svelte/blob/main/build.js

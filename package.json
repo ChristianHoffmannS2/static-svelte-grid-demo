@@ -4,7 +4,7 @@
   "scripts": {
     "build": "node buildscript.js",
     "preview": "cd dist && npx localhost",
-    "typecheck": "svelte-check --tsconfig tsconfig.json --fail-on-warnings  --fail-on-hints"
+    "typecheck": "svelte-check --tsconfig tsconfig.json --fail-on-warnings --fail-on-hints"
   },
   "dependencies": {
     "@tsconfig/svelte": "^3.0.0",

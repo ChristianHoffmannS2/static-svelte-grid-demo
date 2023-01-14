@@ -1,13 +1,16 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
 
   let test;
 
+  test = 3;
+
   onMount(() => {
     console.log("the second component has mounted");
-    test.value = "This is from the second component (components can be imported and they are bundled, yay)";
   });
 </script>
+
+<input type="text" />
 
 <style>
   input {
@@ -16,5 +19,3 @@
     min-width: 16em;
   }
 </style>
-
-<input type="text" bind:this={test} />

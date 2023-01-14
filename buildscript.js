@@ -13,9 +13,8 @@ esbuild
         bundle: true,
         outdir: `./dist`,
         mainFields: ["svelte", "browser", "module", "main"],
-        // logLevel: `info`,
-        minify: false, //so the resulting code is easier to understand
-        sourcemap: "inline",
+        minify: process.argv.includes(`--prod`),
+        sourcemap: !process.argv.includes(`--prod`),
         splitting: true,
         write: true,
         format: `esm`,

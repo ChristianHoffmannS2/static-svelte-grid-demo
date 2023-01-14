@@ -57,38 +57,41 @@
     </TopAppBar>
   </header>
 
-  <main>
-      <div class="drawer-container">
-        <Drawer variant="dismissible" bind:open>
-          <Header>
-            <Title>Svelte Demos</Title>
-            <Subtitle>...just in case</Subtitle>
-          </Header>
-          <Content>
-            <List>
-              <Item
-                activated={path === "/"}
-                on:click={() => (open = false)}
-              >
-                <Text>Home</Text>
-              </Item>
+	<div class="main-container">
+		<div class="drawer-container">
+			<Drawer variant="dismissible" bind:open>
+				<Header>
+					<Title>Svelte Demos</Title>
+					<Subtitle>...just in case</Subtitle>
+				</Header>
+				<Content>
+					<List>
+						<Item
+							activated={path === "/"}
+							on:click={() => (open = false)}
+						>
+							<Text>Home</Text>
+						</Item>
 
-              <Item
-                activated={path === "/grid"}
-                on:click={() => (open = false)}
-              >
-                <Text>Grid</Text>
-              </Item>
-            </List>
-          </Content>
-        </Drawer>
-        <AppContent class="app-content">
-          <Route path="grid/*gridRoute" component={Grid} />
-          <Route path="/" component={Base} />
-          <Route component={Error} />
-        </AppContent>
-      </div>
-  </main>
+						<Item
+							activated={path === "/grid"}
+							on:click={() => (open = false)}
+						>
+							<Text>Grid</Text>
+						</Item>
+					</List>
+				</Content>
+			</Drawer>
+
+			<AppContent class="app-content">
+				<Route path="grid/*gridRoute" component={Grid} />
+				<Route path="/" component={Base} />
+				<Route component={Error} />
+			</AppContent>
+		</div>
+	</div>
+
+
 </Router>
 
 <style>
@@ -100,10 +103,12 @@
     margin: 0;
     padding: 0;
     height: 100%;
+		display: flex;
+		flex-direction: column;
   }
 
 	* :global(main) {
-		height: 100%;
+		flex: 1;
   }
 
   * :global(.app-content) {
@@ -114,6 +119,9 @@
     padding: 35px;
   }
 
+  .main-container {
+		flex: 1;
+  }
   .drawer-container {
     position: relative;
     display: flex;

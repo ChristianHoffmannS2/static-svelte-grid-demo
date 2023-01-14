@@ -1,9 +1,10 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createHashHistory } from "history";
+import type { HistorySource } from "svelte-navigator";
 
-function createHashSource(basename) {
-	const history = createHashHistory({ basename });
-	let listeners = [];
+function createHashSource(): HistorySource {
+	const history = createHashHistory();
+	let listeners: any[] = [];
 
 	history.listen(location => {
 		if (history.action === "POP") {
@@ -12,6 +13,7 @@ function createHashSource(basename) {
 	});
 
 	return {
+		// @ts-ignore
 		get location() {
 			return history.location;
 		},
@@ -24,13 +26,14 @@ function createHashSource(basename) {
 			listeners = listeners.filter(fn => fn !== handler);
 		},
 		history: {
+			// @ts-ignore
 			get state() {
 				return history.location.state;
 			},
-			pushState(state, title, uri) {
+			pushState(state, _title, uri) {
 				history.push(uri, state);
 			},
-			replaceState(state, title, uri) {
+			replaceState(state, _title, uri) {
 				history.replace(uri, state);
 			},
 			go(to) {

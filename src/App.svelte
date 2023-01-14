@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { Router, Route, Link, createHistory } from "svelte-navigator";
-	import Blog from "./Blog.svelte";
-	import BackButton from "./BackButton.svelte";
-	import ForwardButton from "./ForwardButton.svelte";
-	import createHashSource from "./hashHistory";
+	import Blog from "./routes/Blog/index.svelte";
+	import BackButton from "./components/BackButton/index.svelte";
+	import ForwardButton from "./components/ForwardButton/index.svelte";
+	import createHashSource from "./utils/hashHistory";
 
 	const hash = createHistory(createHashSource());
 </script>

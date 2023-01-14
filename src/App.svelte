@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Router, Route, Link, createHistory } from "svelte-navigator";
 	import Grid from "./routes/Grid/index.svelte";
-	import Home from "./routes/Home/index.svelte";
+	import Base from "./routes/Base/index.svelte";
 	import Error from "./routes/Error/index.svelte";
 
 	import BackButton from "./components/BackButton/index.svelte";
@@ -19,15 +19,13 @@
 			<BackButton />
 			<ForwardButton />
 			<Link to="/">Base</Link>
-			<Link to="home">Home</Link>
 			<Link to="grid">Grid</Link>
 		</nav>
 	</header>
 
 	<main>
 		<Route path="grid/*gridRoute" component={Grid} />
-		<Route path="home" component={Home} />
-		<Route path="/" component={Home} />
+		<Route path="/" component={Base} />
 		<Route component={Error} />
 	</main>
 </Router>

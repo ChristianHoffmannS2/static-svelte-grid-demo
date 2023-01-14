@@ -26,7 +26,6 @@
     }
   };
   
-  // binds to changes only to pathname deeper from the generated store ;)
   $: path = $location.pathname;
 </script>
 

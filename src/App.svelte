@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { Router, Route, Link, createHistory } from "svelte-navigator";
-	import Blog from "./routes/Blog/index.svelte";
+	import Grid from "./routes/Grid/index.svelte";
+	import Home from "./routes/Home/index.svelte";
+	import Error from "./routes/Error/index.svelte";
+
 	import BackButton from "./components/BackButton/index.svelte";
 	import ForwardButton from "./components/ForwardButton/index.svelte";
 	import createHashSource from "./utils/hashHistory";
@@ -17,28 +20,15 @@
 			<ForwardButton />
 			<Link to="/">Base</Link>
 			<Link to="home">Home</Link>
-			<Link to="about">About</Link>
-			<Link to="blog">Blog</Link>
+			<Link to="grid">Grid</Link>
 		</nav>
 	</header>
 
 	<main>
-		<Route path="blog/*blogRoute" component={Blog} />
-
-		<Route path="home">
-			<h3>Home</h3>
-			<p>Home sweet home...</p>
-		</Route>
-
-		<Route path="about">
-			<h3>About</h3>
-			<p>That's what it's all about!</p>
-		</Route>
-
-		<Route>
-			<h3>Default</h3>
-			<p>No Route could be matched.</p>
-		</Route>
+		<Route path="grid/*gridRoute" component={Grid} />
+		<Route path="home" component={Home} />
+		<Route path="/" component={Home} />
+		<Route component={Error} />
 	</main>
 </Router>
 

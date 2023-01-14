@@ -3,6 +3,7 @@
   "type": "module",
   "scripts": {
     "build": "node buildscript.js",
+    "preview": "cd dist && npx localhost",
     "typecheck": "svelte-check --tsconfig tsconfig.json --fail-on-warnings  --fail-on-hints"
   },
   "dependencies": {
@@ -14,5 +15,8 @@
     "svelte-preprocess": "^4.10.7",
     "typescript": "^4.7.3"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "localhost": "^0.4.1"
+  }
 }

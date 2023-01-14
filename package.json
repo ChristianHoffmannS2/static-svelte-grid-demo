@@ -2,9 +2,12 @@
   "main": "buildscript.js",
   "type": "module",
   "scripts": {
-    "build": "node buildscript.js",
+    "build": "npm run build:theme && npm run build:code",
+    "build:code": "node buildscript.js",
+    "build:theme": "npm run smui-theme:build",
     "preview": "cd dist && npx localhost",
-    "typecheck": "svelte-check --tsconfig tsconfig.json --fail-on-warnings --fail-on-hints"
+    "typecheck": "svelte-check --tsconfig tsconfig.json --fail-on-warnings --fail-on-hints",
+    "smui-theme:build": "smui-theme compile static/smui.css -i src/theme"
   },
   "dependencies": {
     "history": "^5.0.0",
@@ -19,6 +22,15 @@
   },
   "private": true,
   "devDependencies": {
-    "localhost": "^0.4.1"
+    "localhost": "^0.4.1",
+    "@material/dom": "^14.0.0",
+		"@smui/button": "^7.0.0-beta.0",
+		"@smui/circular-progress": "^7.0.0-beta.0",
+		"@smui/drawer": "^7.0.0-beta.0",
+		"@smui/icon-button": "^7.0.0-beta.0",
+		"@smui/list": "^7.0.0-beta.0",
+		"@smui/textfield": "^7.0.0-beta.0",
+		"@smui/top-app-bar": "^7.0.0-beta.0",
+    "smui-theme": "^7.0.0-beta.0"
   }
 }

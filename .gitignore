@@ -2,3 +2,8 @@ dist
 *.log
 
 node_modules
+
+static/*.map
+static/app.css
+static/smui.css
+static/ag-grid.css

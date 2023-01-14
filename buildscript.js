@@ -32,7 +32,7 @@ esbuild
     });
 
 //use a basic html file to test with
-fs.copyFileSync("./src/index.html", "./dist/index.html");
+fs.cpSync("./static", "./dist", {recursive: true});
 
 // maybe incorporate svelte-check or tsc too?
 // https://github.com/EMH333/esbuild-svelte/blob/main/build.js

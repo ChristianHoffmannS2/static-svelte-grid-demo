@@ -30,4 +30,4 @@ esbuild
         process.exit(1);
     });
 
-fs.cpSync("./static", "./dist", {recursive: true});
+fs.cpSync("./static", "./dist", { recursive: true });

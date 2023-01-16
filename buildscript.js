@@ -7,7 +7,8 @@ if (fs.existsSync("./dist/")) {
     fs.rmSync("./dist/", { recursive: true, force: true });
     fs.mkdirSync("./dist/");
 }
-esbuild
+
+await esbuild
     .build({
         entryPoints: [`./src/index.ts`],
         bundle: true,

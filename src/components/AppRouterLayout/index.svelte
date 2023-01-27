@@ -63,6 +63,7 @@
   .main-container {
     flex: 1;
   }
+
   .drawer-container {
     position: relative;
     display: flex;

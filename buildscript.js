@@ -6,6 +6,7 @@ import sveltePreprocess from "svelte-preprocess";
 if (fs.existsSync("./dist/")) {
     fs.rmSync("./dist/", { recursive: true, force: true });
     fs.mkdirSync("./dist/");
+    fs.cpSync("./static", "./dist", { recursive: true });
 }
 
 await esbuild
@@ -31,4 +32,4 @@ await esbuild
         process.exit(1);
     });
 
-fs.cpSync("./static", "./dist", { recursive: true });
+

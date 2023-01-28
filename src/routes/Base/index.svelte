@@ -18,3 +18,4 @@
 
 <hr />
 <p>Jump to the <Link to="/grid">grid</Link>!</p>
+<p>Test some search params on tis hash-router <Link to="/param-test?openId=5">here</Link>!</p>

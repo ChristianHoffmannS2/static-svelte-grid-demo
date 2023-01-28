@@ -37,6 +37,15 @@
 		</Item>
 
 		<Item
+			activated={path === '/param-test'}
+			on:click={() => {
+				onRouteLinkClick('/param-test');
+			}}
+		>
+			<Text>Param-Test</Text>
+		</Item>
+
+		<Item
 			activated={path === '/grid'}
 			on:click={() => {
 				onRouteLinkClick('/grid');

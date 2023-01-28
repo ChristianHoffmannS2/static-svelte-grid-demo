@@ -1,7 +1,17 @@
 ## Typecheck
 
 ```bash
-npm run typecheck
+npm run check
+```
+
+## Lint & format
+
+```bash
+npm run lint
+```
+
+```bash
+npm run format
 ```
 
 ## Building

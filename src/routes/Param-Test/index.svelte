@@ -12,7 +12,7 @@
 		searchString = $location.search;
 	};
 
-	$: onLocationChange();
+	$: $location.search, onLocationChange();
 </script>
 
 <div>

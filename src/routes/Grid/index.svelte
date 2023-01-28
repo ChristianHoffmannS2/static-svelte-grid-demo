@@ -3,6 +3,10 @@
 	import Textfield from '@smui/textfield';
 	import Icon from '@smui/textfield/icon';
 
+	import type { IOlympicData, ModalCloseEvent } from './types';
+
+	import ModalContent from './modalContent.svelte';
+
 	import AgGridSvelte from 'ag-grid-svelte';
 	import type {
 		ColDef,
@@ -12,18 +16,16 @@
 		GridSizeChangedEvent
 	} from 'ag-grid-community';
 
-	interface IOlympicData {
-		athlete: string;
-		age: number;
-		country: string;
-		year: number;
-		date: string;
-		sport: string;
-		gold: number;
-		silver: number;
-		bronze: number;
-		total: number;
-	}
+	import { useLocation } from 'svelte-navigator';
+
+	const location = useLocation();
+
+	let openId: string | null;
+
+	const onLocationChange = () => {
+		const params = new URLSearchParams($location.search);
+		openId = params.get('openId');
+	};
 
 	const defaultColDef: ColDef = { resizable: true, editable: true, sortable: true, width: 90 };
 	let rowData: IOlympicData[] = [];
@@ -59,7 +61,7 @@
 						.then((data) => {
 							rowData = data;
 						});
-				}, 1500);
+				}, 750);
 			}
 		},
 		onGridSizeChanged: (event: GridSizeChangedEvent) => {
@@ -75,9 +77,16 @@
 		api?.setQuickFilter(filterString);
 	};
 
+	function closeHandler(e: ModalCloseEvent) {
+		console.log(e.detail.action);
+	}
+
 	// bind to changes of filterString to our eventHandler :)
 	$: filterString, onFilterStringChange();
+	$: $location.search, onLocationChange();
 </script>
+
+<ModalContent open={!!(openId && rowData.length > 0)} {closeHandler} />
 
 <div style:display="flex" style:flex-direction="column" style:height="100%">
 	{#if rowData.length > 0}
